@@ -108,7 +108,7 @@ function createPipe() {
     if (isGameOver) return;
 
     const containerHeight = gameContainer.clientHeight;
-    const gap = 190; // The spacing to fly through (Adjust to make it harder/easier)
+    const gap = 300; // The spacing to fly through (Adjust to make it harder/easier)
     const minHeight = 50;
     const maxHeight = containerHeight - gap - minHeight;
     const topPipeHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
@@ -140,11 +140,14 @@ function checkCollision(el1, el2) {
     const rect1 = el1.getBoundingClientRect();
     const rect2 = el2.getBoundingClientRect();
 
+    // Define a buffer in pixels to ignore the invisible transparent margins
+    const buffer = 16; // Adjust this number (higher = smaller collision box)
+
     return !(
-        rect1.top > rect2.bottom ||
-        rect1.bottom < rect2.top ||
-        rect1.right < rect2.left ||
-        rect1.left > rect2.right
+        (rect1.top + buffer) > rect2.bottom ||
+        (rect1.bottom - buffer) < rect2.top ||
+        (rect1.right - buffer) < rect2.left ||
+        (rect1.left + buffer) > rect2.right
     );
 }
 
