@@ -46,8 +46,8 @@ body {
     position: absolute;
     left: 50px;
     top: 250px;
-    width: 50px; /* Adjust based on your PNG aspect ratio */
-    height: 50px;
+    width: 75px; /* Adjust based on your PNG aspect ratio */
+    height: 75px;
     z-index: 10;
     transition: transform 0.1s ease;
 }
@@ -75,13 +75,58 @@ body {
 #start-screen {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for contrast */
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
-    text-shadow: 2px 2px 0 #000;
     z-index: 30;
     cursor: pointer;
+    text-align: center;
+}
+
+/* Container to center and align the text cleanly */
+.game-over-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.game-over-box h1 {
+    font-size: 2.8rem;
+    color: #ff4757;
+    text-shadow: 3px 3px 0px #000;
+    letter-spacing: 2px;
+    animation: popIn 0.3s ease-out;
+}
+
+.score-box {
+    font-size: 1.8rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 25px;
+    border-radius: 50px;
+    border: 2px solid #fff;
+    text-shadow: 2px 2px 0px #000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.game-over-box p {
+    font-size: 1.2rem;
+    color: #eccc68;
+    text-shadow: 1px 1px 2px #000;
+    margin-top: 10px;
+    animation: blink 1.2s infinite;
+}
+
+/* Subtle blinking animation for the action text */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
